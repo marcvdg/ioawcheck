@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Controleer of u recht heeft op een IOAW-uitkering met deze eenvoudige wizard.">
+  <title>Uitkeringswizard IOAW</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      position: relative;
+      min-height: 400px;
+    }
+    .question {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      z-index: 0;
+      margin-bottom: 20px;
+      background: white;
+    }
+    .question.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    h2 {
+      color: rgb(0, 120, 131);
+    }
+    h3 {
+      font-weight: 700;
+    }
+    
+    .answers button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1em;
+      border: 2px solid rgb(0, 120, 131);
+      background: #fff;
+      color: rgb(0, 120, 131);
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.5s ease;
+    }
+    .answers button:hover {
+      background: rgb(0, 120, 131);
+      color: #fff;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    a {
+      color: rgb(0, 120, 131);
+    }
+
+    button:focus, a:focus {
+      outline: 3px solid rgb(0, 120, 131);
+      outline-offset: 2px;
+    }
+
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 10px;
+      background: #000;
+      color: #fff;
+      z-index: 1000;
+    }
+
+    .top-bar {
+      height: 60px;
+      background-color: teal;
+      width: 100%;
+      border-bottom-color: rgb(244, 244, 244);
+      border-bottom-style: solid;
+      border-bottom-width: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar"></div>
+  <a href="#q1" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Direct naar inhoud</a>
+  <main class="container" role="main">
+
+    <div id="q1" class="question active" role="region" aria-labelledby="q1-title" tabindex="-1">
+      <h2 id="q1-title">Bent u geboren in 1964 of eerder?</h2>
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('q2')">Ja</button>
+        <button onclick="goto('nee_algemeen')">Nee</button>
+      </div>
+    </div>
+
+    <div id="q2" class="question" role="region" aria-labelledby="q2-title" tabindex="-1">
+      <h2 id="q2-title">Bent u na uw 50e verjaardag werkloos geworden?</h2>
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('q3')">Ja</button>
+        <button onclick="goto('nee_algemeen')">Nee</button>
+      </div>
+    </div>
+
+    <div id="q3" class="question" role="region" aria-labelledby="q3-title" tabindex="-1">
+      <h2 id="q3-title">Heeft u uw AOW-leeftijd bereikt?</h2>
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('nee_AOW')">Ja</button>
+        <button onclick="goto('q4')">Nee</button>
+      </div>
+    </div>
+
+    <div id="q4" class="question" role="region" aria-labelledby="q4-title" tabindex="-1">
+      <h2 id="q4-title">Heeft u langer dan 3 maanden een WW-uitkering ontvangen?</h2>
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('q7')">Ja</button>
+        <button onclick="goto('q5')">Nee</button>
+      </div>
+    </div>
+
+    <div id="q5" class="question" role="region" aria-labelledby="q5-title" tabindex="-1">
+      <h2 id="q5-title">Heeft u recht gehad op een WGA-uitkering van het UWV?</h2>
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('q6')">Ja</button>
+        <button onclick="goto('nee_algemeen')">Nee</button>
+      </div>
+    </div>
+
+    <div id="q6" class="question" role="region" aria-labelledby="q6-title" tabindex="-1">
+      <h2 id="q6-title">Is uw WGA-uitkering gestopt, omdat u voor minder dan 35% arbeidsongeschikt bent?</h2>
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('q7')">Ja</button>
+        <button onclick="goto('nee_algemeen')">Nee</button>
+      </div>
+    </div>
+
+    <div id="q7" class="question" role="region" aria-labelledby="q7-title" tabindex="-1">
+      <h2 id="q7-title">Is uw inkomen lager dan het sociaal minimum?</h2>
+      <p>Het sociaal minimum is 1.500 euro per maand.</p>
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('ja')">Nee</button>
+        <button onclick="goto('nee_algemeen')">Nee</button>
+      </div>
+    </div>
+
+    <div id="nee_algemeen" class="question" role="region" aria-labelledby="result1-title" tabindex="-1">
+      <h2 id="result1-title">Resultaat</h2>
+      <div class="result">
+        <p>U heeft geen recht op een IAOW-uitkering.</p>
+      </div>
+    </div>
+
+    <div id="nee_AOW" class="question" role="region" aria-labelledby="result2-title" tabindex="-1">
+      <h2 id="result2-title">Resultaat</h2>
+      <div class="result">
+        <p>Als u AOW krijgt, heeft u geen recht op IOAW.</p>
+      </div>
+    </div>
+
+    <div id="ja" class="question" role="region" aria-labelledby="result3-title" tabindex="-1">
+      <h2 id="result3-title">U heeft misschien recht op een IAOW-uitkering</h2>
+      <div class="result">
+        <p>Vraag de uitkering direct aan bij Laborijn.</p>
+        <h3>Heeft u vragen?</h3>
+        <p>Als u er niet uitkomt of vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+      </div>
+    </div>
+
+  </main>
+
+<script>
+  // Vragen tonen op basis van hash
+  function showFromHash() {
+    const hash = window.location.hash.substring(1); // verwijder '#'
+    document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+
+    if (hash && document.getElementById(hash)) {
+      document.getElementById(hash).classList.add('active');
+    } else {
+      // default naar vraag 1
+      document.getElementById('q1').classList.add('active');
+    }
+  }
+
+  function goto(id) {
+    location.hash = id;
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.focus();
+    }, 0);
+  }
+
+  function result(text) {
+    document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+    const resultEl = document.getElementById('result');
+    resultEl.classList.add('active');
+    document.getElementById('resultText').innerHTML = text;
+    history.pushState(null, '', '#result');
+    setTimeout(() => {
+      resultEl.focus();
+    }, 0);
+  }
+
+  window.addEventListener('hashchange', showFromHash);
+  window.addEventListener('load', showFromHash);
+</script>
+</body>
+</html>
