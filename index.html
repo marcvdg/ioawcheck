@@ -43,7 +43,7 @@
       font-weight: 700;
     }
     
-    .answers button {
+    .answers button, .result button {
       display: block;
       width: 100%;
       margin: 10px 0;
@@ -94,8 +94,17 @@
 </head>
 <body>
   <div class="top-bar"></div>
-  <a href="#q1" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Direct naar inhoud</a>
+  <a href="#q0" class="skip-link" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Direct naar inhoud</a>
   <main class="container" role="main">
+
+    <div id="q0" class="question active" role="region" aria-labelledby="q1-title" tabindex="-1">
+      <h2 id="q0-title">Kijk of u een uitkering bij ons kunt aanvragen</h2>
+      <p>Beantwoord de volgende vragen. Dit is een demo.</p>
+
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('q1')">Start</button>
+      </div>
+    </div>
 
     <div id="q1" class="question active" role="region" aria-labelledby="q1-title" tabindex="-1">
       <h2 id="q1-title">Bent u geboren in 1964 of eerder?</h2>
@@ -174,6 +183,7 @@
       <h2 id="result1-title">Resultaat</h2>
       <div class="result">
         <p>U heeft geen recht op een IOAW-uitkering.</p>
+        <button onclick="goto('q0')">Begin opnieuw</button>
       </div>
     </div>
 
@@ -183,6 +193,7 @@
         <p>Uw inkomen is hoger dat een bijstandsuitkering. Daarom kunt u geen IOAW-uitkering aanvragen.</p>
         <h3>Heeft u vragen?</h3>
         <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+        <button onclick="goto('q0')">Begin opnieuw</button>
       </div>
     </div>
 
@@ -192,6 +203,7 @@
         <p>Om een IOAW-uitkering aan te vragen, moet u eerder een WW-uitkering of WGA-uitkering hebben gekregen.</p>
         <h3>Heeft u vragen?</h3>
         <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+        <button onclick="goto('q0')">Begin opnieuw</button>
       </div>
     </div>
 
@@ -201,6 +213,7 @@
         <p>Om een IOAW-uitkering aan te vragen, moet u na uw 50ste verjaardag werkloos zijn geworden.</p>
         <h3>Heeft u vragen?</h3>
         <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+        <button onclick="goto('q0')">Begin opnieuw</button>
       </div>
     </div>
 
@@ -210,6 +223,7 @@
         <p>Om een IOAW-uitkering aan te vragen, moet u geboren zijn in 1964 of eerder.</p>
         <h3>Heeft u vragen?</h3>
         <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+        <button onclick="goto('q0')">Begin opnieuw</button>
       </div>
     </div>
 
@@ -219,6 +233,7 @@
         <p>Om een IOAW-uitkering aan te vragen, moet uw WGA-uitkering zijn gestopt omdat u minder dan 35% arbeidsongeschikt was. U kon dus meer dan 65% van uw oude loon verdienen</p>
         <h3>Heeft u vragen?</h3>
         <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+        <button onclick="goto('q0')">Begin opnieuw</button>
       </div>
     </div>
 
@@ -229,6 +244,7 @@
         <p>Omdat u een AOW-uitkering krijgt, kunt u geen IOAW-uitkering aanvragen.</p>
         <h3>Heeft u vragen?</h3>
         <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+        <button onclick="goto('q0')">Begin opnieuw</button>
       </div>
     </div>
 
@@ -238,6 +254,7 @@
         <p>Vraag de uitkering direct aan bij Laborijn.</p>
         <h3>Heeft u vragen?</h3>
         <p>Als u er niet uitkomt of vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+        <button onclick="goto('q0')">Begin opnieuw</button>
       </div>
     </div>
 
@@ -252,8 +269,8 @@
     if (hash && document.getElementById(hash)) {
       document.getElementById(hash).classList.add('active');
     } else {
-      // default naar vraag 1
-      document.getElementById('q1').classList.add('active');
+      // default naar vraag 0
+      document.getElementById('q0').classList.add('active');
     }
   }
 
