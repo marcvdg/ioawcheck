@@ -101,7 +101,7 @@
       <h2 id="q1-title">Bent u geboren in 1964 of eerder?</h2>
       <div class="answers" role="group" aria-label="Kies een antwoord">
         <button onclick="goto('q2')">Ja</button>
-        <button onclick="goto('nee_algemeen')">Nee</button>
+        <button onclick="goto('nee_geboortejaar')">Nee</button>
       </div>
     </div>
 
@@ -109,7 +109,7 @@
       <h2 id="q2-title">Bent u na uw 50e verjaardag werkloos geworden?</h2>
       <div class="answers" role="group" aria-label="Kies een antwoord">
         <button onclick="goto('q3')">Ja</button>
-        <button onclick="goto('nee_algemeen')">Nee</button>
+        <button onclick="goto('nee_werkloos')">Nee</button>
       </div>
     </div>
 
@@ -133,7 +133,7 @@
       <h2 id="q5-title">Heeft u recht gehad op een WGA-uitkering van het UWV?</h2>
       <div class="answers" role="group" aria-label="Kies een antwoord">
         <button onclick="goto('q6')">Ja</button>
-        <button onclick="goto('nee_algemeen')">Nee</button>
+        <button onclick="goto('nee_uitkering')">Nee</button>
       </div>
     </div>
 
@@ -141,35 +141,99 @@
       <h2 id="q6-title">Is uw WGA-uitkering gestopt, omdat u voor minder dan 35% arbeidsongeschikt bent?</h2>
       <div class="answers" role="group" aria-label="Kies een antwoord">
         <button onclick="goto('q7')">Ja</button>
-        <button onclick="goto('nee_algemeen')">Nee</button>
+        <button onclick="goto('nee_wga')">Nee</button>
       </div>
     </div>
 
     <div id="q7" class="question" role="region" aria-labelledby="q7-title" tabindex="-1">
-      <h2 id="q7-title">Is uw inkomen lager dan het sociaal minimum?</h2>
-      <p>Het sociaal minimum is 1.500 euro per maand.</p>
+      <h2 id="q7-title">Bent u getrouwd of woont u met iemand samen?</h2>
+      <p></p>
       <div class="answers" role="group" aria-label="Kies een antwoord">
-        <button onclick="goto('ja')">Nee</button>
-        <button onclick="goto('nee_algemeen')">Nee</button>
+        <button onclick="goto('q8')">Nee</button>
+        <button onclick="goto('q9')">Nee</button>
+      </div>
+    </div>
+
+    <div id="q8" class="question" role="region" aria-labelledby="q8-title" tabindex="-1">
+      <h2 id="q8-title">Is uw inkomen lager dan 1.345 euro per maand?</h2>
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('ja')">Ja</button>
+        <button onclick="goto('nee_geld')">Nee</button>
+      </div>
+    </div>
+
+      <div id="q9" class="question" role="region" aria-labelledby="q9-title" tabindex="-1">
+      <h2 id="q9-title">Is uw inkomen lager dan 1.922 euro per maand?</h2>
+      <div class="answers" role="group" aria-label="Kies een antwoord">
+        <button onclick="goto('ja')">Ja</button>
+        <button onclick="goto('nee_geld')">Nee</button>
       </div>
     </div>
 
     <div id="nee_algemeen" class="question" role="region" aria-labelledby="result1-title" tabindex="-1">
       <h2 id="result1-title">Resultaat</h2>
       <div class="result">
-        <p>U heeft geen recht op een IAOW-uitkering.</p>
+        <p>U heeft geen recht op een IOAW-uitkering.</p>
       </div>
     </div>
 
-    <div id="nee_AOW" class="question" role="region" aria-labelledby="result2-title" tabindex="-1">
-      <h2 id="result2-title">Resultaat</h2>
+     <div id="nee_geld" class="question" role="region" aria-labelledby="result4-title" tabindex="-1">
+      <h2 id="result4-title">U heeft geen recht op een IOAW-uitkering</h2>
       <div class="result">
-        <p>Als u AOW krijgt, heeft u geen recht op IOAW.</p>
+        <p>Uw inkomen is hoger dat een bijstandsuitkering. Daarom kunt u geen IOAW-uitkering aanvragen.</p>
+        <h3>Heeft u vragen?</h3>
+        <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+      </div>
+    </div>
+
+    <div id="nee_uitkering" class="question" role="region" aria-labelledby="result5-title" tabindex="-1">
+      <h2 id="result5-title">U heeft geen recht op een IOAW-uitkering</h2>
+      <div class="result">
+        <p>Om een IOAW-uitkering aan te vragen, moet u eerder een WW-uitkering of WGA-uitkering hebben gekregen.</p>
+        <h3>Heeft u vragen?</h3>
+        <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+      </div>
+    </div>
+
+     <div id="nee_werkloos" class="question" role="region" aria-labelledby="result6-title" tabindex="-1">
+      <h2 id="result6-title">U heeft geen recht op een IOAW-uitkering</h2>
+      <div class="result">
+        <p>Om een IOAW-uitkering aan te vragen, moet u na uw 50ste verjaardag werkloos zijn geworden.</p>
+        <h3>Heeft u vragen?</h3>
+        <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+      </div>
+    </div>
+
+    <div id="nee_geboortejaar" class="question" role="region" aria-labelledby="result7-title" tabindex="-1">
+      <h2 id="result7-title">U heeft geen recht op een IOAW-uitkering</h2>
+      <div class="result">
+        <p>Om een IOAW-uitkering aan te vragen, moet u geboren zijn in 1964 of eerder.</p>
+        <h3>Heeft u vragen?</h3>
+        <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+      </div>
+    </div>
+
+    <div id="nee_werkloos" class="question" role="region" aria-labelledby="result8-title" tabindex="-1">
+      <h2 id="result8-title">U heeft geen recht op een IOAW-uitkering</h2>
+      <div class="result">
+        <p>Om een IOAW-uitkering aan te vragen, moet uw WGA-uitkering zijn gestopt omdat u minder dan 35% arbeidsongeschikt was. U kon dus meer dan 65% van uw oude loon verdienen</p>
+        <h3>Heeft u vragen?</h3>
+        <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
+      </div>
+    </div>
+
+
+    <div id="nee_AOW" class="question" role="region" aria-labelledby="result2-title" tabindex="-1">
+      <h2 id="result2-title">U heeft geen recht op een IOAW-uitkering</h2>
+      <div class="result">
+        <p>Omdat u een AOW-uitkering krijgt, kunt u geen IOAW-uitkering aanvragen.</p>
+        <h3>Heeft u vragen?</h3>
+        <p>Als u vragen heeft, kunt u met ons contact opnemen via telefoon: (0314) 654 654 of e-mail: contact@laborijn.nl</p>
       </div>
     </div>
 
     <div id="ja" class="question" role="region" aria-labelledby="result3-title" tabindex="-1">
-      <h2 id="result3-title">U heeft misschien recht op een IAOW-uitkering</h2>
+      <h2 id="result3-title">U heeft misschien recht op een IOAW-uitkering</h2>
       <div class="result">
         <p>Vraag de uitkering direct aan bij Laborijn.</p>
         <h3>Heeft u vragen?</h3>
